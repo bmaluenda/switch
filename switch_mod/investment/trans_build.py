@@ -16,7 +16,7 @@ SYNOPSIS
 
 import os
 from pyomo.environ import *
-from financials import capital_recovery_factor as crf
+from switch_mod.financials import capital_recovery_factor as crf
 
 
 def define_components(mod):
