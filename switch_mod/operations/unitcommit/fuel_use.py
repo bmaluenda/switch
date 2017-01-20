@@ -62,7 +62,7 @@ for fuel use.
 SYNOPSIS
 >>> from switch_mod.utilities import define_AbstractModel
 >>> model = define_AbstractModel(
-...     'timescales', 'financials', 'load_zones', 'fuels', 'gen_tech',
+...     'timescales', 'financials', 'load_zones', 'fuels',
 ...     'investment.proj_build', 'operations.proj_dispatch', 
 ...     'operations.unitcommit')
 >>> instance = model.load_inputs(inputs_dir='test_dat')
