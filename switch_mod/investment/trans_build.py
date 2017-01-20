@@ -9,7 +9,7 @@ SWITCH-Pyomo model.
 SYNOPSIS
 >>> from switch_mod.utilities import define_AbstractModel
 >>> model = define_AbstractModel(
-...     'timescales', 'financials', 'load_zones', 'trans_build')
+...     'timescales', 'financials', 'load_zones', 'investment.trans_build')
 >>> instance = model.load_inputs(inputs_dir='test_dat')
 
 """
