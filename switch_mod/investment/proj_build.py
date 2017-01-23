@@ -314,19 +314,21 @@ def define_components(mod):
             if proj in m.PROJECTS_WITH_MULTI_FUEL 
                 else [m.proj_energy_source[proj]]))
 
-    mod.NEW_PROJ_BUILDYEARS = Set(
-        dimen=2,
-        within=mod.PROJECTS * mod.PERIODS)
     mod.EXISTING_PROJ_BUILDYEARS = Set(
         dimen=2)
+    mod.PROJECT_BUILDYEARS = Set(
+        dimen=2,
+        validate=lambda m, proj, bld_yr: (
+            (proj, bld_yr) in m.EXISTING_PROJ_BUILDYEARS or
+            (proj, bld_yr) in m.PROJECTS * m.PERIODS))
+    mod.NEW_PROJ_BUILDYEARS = Set(
+        dimen=2,
+        initialize=lambda m: m.PROJECT_BUILDYEARS - m.EXISTING_PROJ_BUILDYEARS)
     mod.proj_existing_cap = Param(
         mod.EXISTING_PROJ_BUILDYEARS,
         within=NonNegativeReals)
     mod.min_data_check('proj_existing_cap')
-    mod.PROJECT_BUILDYEARS = Set(
-        dimen=2,
-        initialize=lambda m: set(
-            m.EXISTING_PROJ_BUILDYEARS | m.NEW_PROJ_BUILDYEARS))
+    
 
     def init_proj_final_period(m, proj, build_year):
         max_age = m.proj_max_age[proj]
