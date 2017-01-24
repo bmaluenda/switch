@@ -34,6 +34,7 @@ You will get an error if you include both the package and the core modules,
 because they are redundant.
 
 """
+__version__='2.0.0b1'
 
 core_modules = [
     'switch_mod.timescales',

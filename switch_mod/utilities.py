@@ -14,6 +14,7 @@ import __main__ as main
 from pyomo.environ import *
 import pyomo.opt
 import datetime
+import switch_mod.input_upgrades.upgrade_2_0_0b1 as b1_upgrade
 
 # This stores full names of modules that are dynamically loaded to
 # define a Switch model.
@@ -108,6 +109,11 @@ def load_inputs(model, inputs_dir=None, attachDataPortal=True):
     """
     if inputs_dir is None:
         inputs_dir = getattr(model.options, "inputs_dir", "inputs")
+    # Update the inputs directory as needed
+    if b1_upgrade.can_upgrade_inputs_dir(inputs_dir):
+    	print "Upgrading inputs..."
+    	b1_upgrade.upgrade_input_dir(inputs_dir)
+    # Load data
     data = DataPortal(model=model)
     # Attach an augmented load data function to the data portal object
     data.load_aug = types.MethodType(load_aug, data)

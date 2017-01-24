@@ -10,14 +10,15 @@ def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
 requires = [
-    "Pyomo"
+    "Pyomo",
+    "pandas"
 ]
 
 packages = ['switch_mod']
 
 setup(
     name='SWITCH',
-    version='2.0.b0',
+    version='2.0.0b1',
     maintainer='Matthias Fripp',
     maintainer_email='mfripp@hawaii.edu',
     url='http://switch-model.org',
