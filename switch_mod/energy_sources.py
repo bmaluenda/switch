@@ -1,9 +1,9 @@
-# Copyright 2015 The Switch Authors. All rights reserved.
+# Copyright 2015-2017 The Switch Authors. All rights reserved.
 # Licensed under the Apache License, Version 2, which is in the LICENSE file.
 
 """
-Defines model components to describe fuels and other energy sources for
-the SWITCH-Pyomo model.
+Defines model components to describe both fuels and non-fuel energy sources
+for the SWITCH-Pyomo model.
 
 """
 
